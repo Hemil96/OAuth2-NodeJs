@@ -10,7 +10,7 @@ const authenticate = (req, res) => {
     .then((user) => {
       this.user = user;
       if (!user) return res.status(403).send({ success: false, msg: 'Authentication failed, User not found' });
-      return utils.comparePassword(req.body.password, user.password);
+      return utils.comparePassword(String(req.body.password), String(user.password));
     })
     .then((isMatch) => {
       if (!isMatch) return res.status(403).send({ success: false, msg: 'Authenticaton failed, wrong password.' });
@@ -22,7 +22,6 @@ const authenticate = (req, res) => {
       return res.status(500).send({ success: false, error: err });
     });
 };
-
 
 // POST /adduser
 const addNew = (req, res) => {

@@ -29,7 +29,7 @@ const postClients = (req, res) => {
 // GET /getClients
 const getClients = (req, res) => {
   // Use the Client model to find all clients
-  Client.find({ userId: req.query.userId })
+  Client.find({ userId: req.params.id })
     .then((foundClient) => {
       if (!foundClient) return res.status(404).json({ error: 'Client not found' });
       return res.json({ message: 'Client found', data: foundClient });

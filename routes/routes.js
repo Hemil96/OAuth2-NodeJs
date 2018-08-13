@@ -13,7 +13,7 @@ router.get('/getinfo', actions.getinfo); // Retrive All Users
 
 // Client routes
 router.post('/clients', auth.isAuthenticated, client.postClients); // Create New User
-router.get('/clients', auth.isAuthenticated, client.getClients); // Authenticate client
+router.get('/client/:id', auth.isAuthenticated, client.getClients); // Authenticate client
 
 // Oauth routes
 router.get('/oauth2/authorize', oauth2.authorization); // Ask for permission
