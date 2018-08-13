@@ -1,7 +1,7 @@
 // Load required packages
 var Client = require('../model/client');
 
-// /client for POST
+// POST /postClients
 const postClients = (req, res) => {
   // Set the client properties that came from the POST data
   const clientToCreate = {
@@ -26,7 +26,7 @@ const postClients = (req, res) => {
     });
 };
 
-// Create endpoint /api/clients for GET
+// GET /getClients
 const getClients = (req, res) => {
   // Use the Client model to find all clients
   Client.find({ userId: req.query.userId })
@@ -40,9 +40,9 @@ const getClients = (req, res) => {
     });
 };
 
-const clientMethods = {
+const clientCtr = {
   postClients,
   getClients,
 };
 
-module.exports = clientMethods;
+module.exports = clientCtr;

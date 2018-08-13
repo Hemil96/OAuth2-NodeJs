@@ -7,7 +7,7 @@ const passport = require('passport');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const ejs = require('ejs');
-const auth = require('./methods/auth.js');
+const auth = require('./controller/auth.js');
 const routes = require('./routes/routes');
 const config = require('./config/database');
 

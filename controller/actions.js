@@ -4,6 +4,7 @@ const Book = require('../model/book');
 const config = require('../config/database');
 const utils = require('../helper/utils');
 
+// POST /authenticate
 const authenticate = (req, res) => {
   User.findOne({ name: req.body.name })
     .then((user) => {
@@ -22,6 +23,8 @@ const authenticate = (req, res) => {
     });
 };
 
+
+// POST /adduser
 const addNew = (req, res) => {
   if ((!req.body.name) || (!req.body.password)) {
     return res.status(400).json({ success: false, msg: 'Enter all values' });
@@ -43,6 +46,8 @@ const addNew = (req, res) => {
     });
 };
 
+
+// GET /getinfo
 const getinfo = (req, res) => {
   if (req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Bearer') {
     const token = req.headers.authorization.split(' ')[1];
@@ -52,6 +57,8 @@ const getinfo = (req, res) => {
   return res.status(400).json({ success: false, msg: 'No header' });
 };
 
+
+// POST /addBook
 const addBook = (req, res) => {
   const bookToCreate = {
     name: req.body.name,
@@ -70,6 +77,7 @@ const addBook = (req, res) => {
     });
 };
 
+// GET /getBooks
 const getBook = (req, res) => {
   Book.find({ userId: req.user_id })
     .then((foundBook) => {

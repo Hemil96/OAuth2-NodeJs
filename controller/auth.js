@@ -49,6 +49,8 @@ passport.use(new JwtBearerStrategy(
   },
 ));
 
+
+// Middlewares
 exports.isBearerAuthenticated = passport.authenticate('jwt-bearer', { session: false });
 
 exports.isAuthenticated = passport.authenticate(['jwt'], { session: false });

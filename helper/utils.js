@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt');
-const User = require('../model/user');
 
+// Comapre text password and hash
 const comparePassword = (textPassword, hash) => {
   return new Promise((resolve, reject) => {
     bcrypt.compare(textPassword, hash)
